@@ -1,0 +1,28 @@
+{
+    "taskDefinition": "ecs-demo:1",
+    "cluster": "bgdemo",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:300688157164:targetgroup/bgdemoTG1/e6b3d83b74ef2e70",
+            "containerName": "sample-website",
+            "containerPort": 80
+        }
+    ],
+    "desiredCount": 2,
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-c2c3fca7",
+                "subnet-f08ed387"
+            ],
+            "securityGroups": [
+                "sg-0f909daa90405e225"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}
